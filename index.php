@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,21 +14,24 @@
     <?php include_once("includes/header.php");?>
     <!-- header -->
 
-    <!-- include variables and functions -->
-    <?php
-    include_once('includes/variables.php');
-    include_once('includes/functions.php');
-    ?>
+    <!-- Include login form -->
+    <?php include_once('login.php'); ?>
+    <!-- Include logout form -->
+    <?php include_once('logout.php'); ?>
+
       <!-- main -->
     <div class="container">
         <h1>Recipes List</h1>
-        <?php foreach(get_recipes($recipes) as $recipe) : ?>
-            <article>
-                <h3><?php echo($recipe['title']); ?></h3>
-                <div><?php echo($recipe['recipe']); ?></div>
-                <i><?php echo(display_author($recipe['author'], $users)); ?></i>
-            </article>
-        <?php endforeach ?>
+<!-- If the user exists, the recipes are displayed -->
+        
+            <?php foreach(get_recipes($recipes, $limit) as $recipe) : ?>
+                <article>
+                    <h3><?php echo $recipe['title']; ?></h3>
+                    <div><?php echo $recipe['recipe']; ?></div>
+                    <i><?php echo (display_author($recipe['author'], $users)); ?></i>
+                </article>
+            <?php endforeach ?>
+        
     </div>   
 
     <!-- footer -->

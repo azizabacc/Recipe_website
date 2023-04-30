@@ -13,7 +13,7 @@ function display_recipe(array $recipe) : string
         $recipe_content .= '</article>';
     }
     
-    return $recipe;
+    return $recipe_content;
 }
 // display the fullname and the age of the author xwith the email adress
 function display_author(string $authorEmail, array $users) : string
@@ -21,22 +21,30 @@ function display_author(string $authorEmail, array $users) : string
     for ($i = 0; $i < count($users); $i++) {
         $author = $users[$i];
         if ($authorEmail === $author['email']) {
-            return $author['full_name'] . '(' . $author['age'] . ' years old)';
+            return $author['full_name'] . ' (' . $author['age'] . ' years old)';
         }
     }
+    return ''; // default return value if author not found
 }
 //return all the recipes enabled
-function get_recipes(array $recipes) : array
+function get_recipes(array $recipes, int $limit) : array
 {
     $valid_recipes = [];
+    $counter = 0;
 
     foreach($recipes as $recipe) {
+        if ($counter == $limit) {
+            return $valid_recipes;
+        }
+
         if ($recipe['is_enabled']) {
             $valid_recipes[] = $recipe;
+            $counter++;
         }
     }
 
     return $valid_recipes;
 }
+
 
 ?>

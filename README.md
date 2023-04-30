@@ -7,3 +7,12 @@
 - add contact form (contact.php) using GET
 - add reminder of infos after filling the contact form  ( submit_contact.php)
 - rename display_recipes.php => index.php 
+
+*******V3******
+- contact.php : using POST
+- Add upload field to the form 
+- save send files in folder uploads
+- add login AND logout
+- change users in variables.php ( add password)
+- change get_recipes(array $recipes, int $limit) 
+- session.start()
