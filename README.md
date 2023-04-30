@@ -16,3 +16,10 @@
 - change users in variables.php ( add password)
 - change get_recipes(array $recipes, int $limit) 
 - session.start()
+
+*******V4******
+-use sql database
+
+*******V5******
+- comments not fixed yet 
+- have to fix the login and logout in the header
